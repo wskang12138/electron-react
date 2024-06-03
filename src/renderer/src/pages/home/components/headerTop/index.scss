@@ -10,13 +10,13 @@
     display: flex;
     background-color: #2C5A95;
     padding: 5px;
-    width: calc(100% - 180px - 40px );
     overflow: hidden;
+
     .box {
       display: grid;
       grid-template-columns: repeat(20, 30px);
       grid-template-rows: repeat(10, 30px);
-      grid-gap: 1.5rem;
+      grid-gap: 20px;
     }
 
     .item {

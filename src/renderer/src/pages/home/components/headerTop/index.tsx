@@ -75,7 +75,6 @@ export const HeaderTop: FC = () => {
             </Space>
           </a>
         </Dropdown>
-
       </div>
     </div>
   )

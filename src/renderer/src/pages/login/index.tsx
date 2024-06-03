@@ -13,8 +13,8 @@ interface Props {
 
 export const Login: React.FC<Props> = (props) => {
 
-  const conRef = useRef();
-  const owlRef = useRef();
+  const conRef = useRef<any>(null);
+  const owlRef = useRef<any>(null);
   const nav =  useNavigate()
 
   useEffect(() => {
