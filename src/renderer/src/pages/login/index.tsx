@@ -16,6 +16,10 @@ export const Login: React.FC<Props> = (props) => {
   const conRef = useRef<any>(null);
   const owlRef = useRef<any>(null);
   const nav =  useNavigate()
+  //进来就检测内存里面是否有账号跟密码
+  useEffect(()=>{
+
+  },[])
 
   useEffect(() => {
     const con: any = conRef.current;

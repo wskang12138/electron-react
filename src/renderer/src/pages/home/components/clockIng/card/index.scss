@@ -18,13 +18,14 @@
 
 /* 设置鼠标移入卡片时执行动画 */
 .cardApp:hover {
-  /* 动画（名称 时长 第三个属性是贝塞尔曲线，我们可以自定义动画的运动轨迹，让动画的运动轨迹有了很多种可能 第四个属性是当我们的动画完成时的状态，一般动画完成之后就回到了0%的状态，默认值是backwards，当我们给的属性值是forwards时，那么动画到100%的时候就会停下来，不会回到0%） */
-  /* 哈哈，这里又啰嗦了，大家见谅哈 */
   // animation: rotate 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
-  /* 大家有没有发现咱们的动画看起来有点生硬，不是很自然 */
-  /* 这里再给大家介绍一个属性，划重点了哦！！ */
 }
-
+.cardEntery{
+   animation: rotate 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+}
+.cardLeve{
+  animation: rotate-reverse 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+}
 .front,
 .back {
   /* 绝对定位 子元素是绝对定位，父元素需要相对定位 */
@@ -45,11 +46,18 @@
   border-radius: 30px;
   /* 隐藏旋转div元素的背面 */
   backface-visibility: hidden;
+  background-image: url('../../../../../assets/images/1.png');
+  background-size: 100% 100%;
 }
 
 .back {
   /* 因为背面卡片要到后面去，所以我们给背面卡片加一个沿Y轴旋转180度的属性，这里我们可以看到旋转了，但是没到后面去，原因就是父盒子现在不是3D盒子，而是一个2D盒子，所以我们需要让父元素变成一个3D盒子（哈哈，有点啰嗦了） */
   transform: rotateY(180deg);
+  color: white;
+  font-size: 30px;
+  background-color: #D2C6AE;
+  background-image: url('../../../../../assets/images/3.png');
+  background-size: 100% 100%;
 }
 
 .clock {

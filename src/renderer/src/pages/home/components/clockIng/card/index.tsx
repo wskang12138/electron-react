@@ -1,10 +1,15 @@
 
 import { Button } from "antd";
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import './index.scss';
+import dayjs from "dayjs";
 let time
 const Card: FC = () => {
+
+  const cardRef = useRef<any>(null)
   const ref = useRef<any>(null)
+  const [nowTime,setNowTime] = useState<any>()
+
   useEffect(() => {
     if (ref?.current) {
       function myTime() {
@@ -48,7 +53,22 @@ const Card: FC = () => {
     })
   }, [ref])
 
-  return (<div className="cardApp">
+  const Onclocking = () => {
+    //发起请求请求成功后
+    setNowTime(dayjs(new Date()).format('YYYY/MM/DD HH:ss'))
+    let dom = cardRef.current
+    if (dom) {
+      dom.classList.add('cardEntery');
+      dom.ontransitionend = function () {
+         setTimeout(()=>{
+          dom.classList.remove('cardEntery');
+         },100000)
+      }
+    }
+  }
+
+
+  return (<div className="cardApp" ref={cardRef}>
     <div className="front">
       <div className="title">
         <h2>当前系统时间</h2>
@@ -66,16 +86,15 @@ const Card: FC = () => {
         </div>
       </div>
       <div className="button">
-        <Button type="primary" size="large" className="dButton">
+        <Button type="primary" size="large" className="dButton" onClick={Onclocking}>
           打卡
         </Button>
       </div>
     </div>
     <div className="back">
-      <p>求点赞~</p>
-      <p>求关注~</p>
-      <p>求评论~</p>
-      <p>求收藏~</p>
+       <p>当前打卡</p>
+       <p>打卡成功</p>
+       <p>{nowTime}</p>
     </div>
   </div>)
 }
