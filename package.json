@@ -22,7 +22,9 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
-    "electron-updater": "^6.1.8"
+    "electron-updater": "^6.1.8",
+    "nprogress": "^0.2.0",
+    "qs": "^6.12.1"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.3.1",

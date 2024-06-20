@@ -17,9 +17,7 @@
 }
 
 /* 设置鼠标移入卡片时执行动画 */
-.cardApp:hover {
-  // animation: rotate 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
-}
+
 .cardEntery{
    animation: rotate 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
 }
@@ -58,6 +56,8 @@
   background-color: #D2C6AE;
   background-image: url('../../../../../assets/images/3.png');
   background-size: 100% 100%;
+  padding: 20px;
+  text-align: center;
 }
 
 .clock {

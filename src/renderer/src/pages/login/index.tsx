@@ -1,25 +1,29 @@
 import { useEffect, useRef, useState } from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import './index.scss'
 import Bottle from './bottle/bottle';
-import  Stars from './stars';
+import Stars from './stars';
 import Grap from './graph';
 import { useNavigate } from 'react-router-dom';
 interface Props {
   title?: string
 }
 
-
 export const Login: React.FC<Props> = (props) => {
 
   const conRef = useRef<any>(null);
   const owlRef = useRef<any>(null);
-  const nav =  useNavigate()
+  const nav = useNavigate()
   //进来就检测内存里面是否有账号跟密码
-  useEffect(()=>{
-
-  },[])
+  useEffect(() => {
+    let user: any = JSON.parse(localStorage.getItem('user') as any)
+    if (user?.username && user?.password) {
+      nav({
+        pathname: '/home'
+      })
+    }
+  }, [])
 
   useEffect(() => {
     const con: any = conRef.current;
@@ -59,7 +63,7 @@ export const Login: React.FC<Props> = (props) => {
         span.classList.remove('in');     // 移除进入的动画
         span.classList.add('out');       // 添加出去的动画
         // 添加出去的坐标
-        let out:any = document.querySelector('.out');
+        let out: any = document.querySelector('.out');
         out.style.left = outX + 'px';
         out.style.top = outY + 'px';
         isOut = false;    // 关闭出去的门
@@ -97,16 +101,16 @@ export const Login: React.FC<Props> = (props) => {
 
   const onFinish = (values: any) => {
     nav({
-      pathname:'/home'
+      pathname: '/home'
     })
-    console.log('Received values of form: ', values);
+    localStorage.setItem('user', JSON.stringify(values))
   };
 
 
   return (
     <div className="login" >
       <Bottle />
-      <Stars/>
+      <Stars />
       <Grap />
       <div className="container" ref={conRef}>
         <div className="owl" ref={owlRef}>

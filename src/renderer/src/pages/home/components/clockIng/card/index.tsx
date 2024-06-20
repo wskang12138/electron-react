@@ -3,12 +3,13 @@ import { Button } from "antd";
 import { FC, useEffect, useRef, useState } from "react";
 import './index.scss';
 import dayjs from "dayjs";
+import { apiGet } from "@renderer/utils/api/api_get";
 let time
 const Card: FC = () => {
 
   const cardRef = useRef<any>(null)
   const ref = useRef<any>(null)
-  const [nowTime,setNowTime] = useState<any>()
+  const [nowTime, setNowTime] = useState<any>()
 
   useEffect(() => {
     if (ref?.current) {
@@ -53,18 +54,23 @@ const Card: FC = () => {
     })
   }, [ref])
 
-  const Onclocking = () => {
+  const Onclocking = async () => {
     //发起请求请求成功后
-    setNowTime(dayjs(new Date()).format('YYYY/MM/DD HH:ss'))
-    let dom = cardRef.current
-    if (dom) {
-      dom.classList.add('cardEntery');
-      dom.ontransitionend = function () {
-         setTimeout(()=>{
-          dom.classList.remove('cardEntery');
-         },100000)
+    // let res = await apiGet('nightWorkTime/api/basic/addTodayTime')
+    let res = true
+    if (res) {
+      setNowTime(res)
+      let dom = cardRef.current
+      if (dom) {
+        dom.classList.add('cardEntery');
+        dom.ontransitionend = function () {
+          setTimeout(() => {
+            dom.classList.remove('cardEntery');
+          }, 100000)
+        }
       }
     }
+
   }
 
 
@@ -92,9 +98,7 @@ const Card: FC = () => {
       </div>
     </div>
     <div className="back">
-       <p>当前打卡</p>
-       <p>打卡成功</p>
-       <p>{nowTime}</p>
+      <p>{nowTime}</p>
     </div>
   </div>)
 }

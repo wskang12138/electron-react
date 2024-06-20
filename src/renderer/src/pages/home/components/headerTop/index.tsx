@@ -12,6 +12,7 @@ export const HeaderTop: FC = () => {
     setTimeout(()=>{
       window.location.reload() //3D效果有影响
     },0)
+    localStorage.clear()
     nav({
       pathname: '/index'
     })
